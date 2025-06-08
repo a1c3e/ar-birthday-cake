@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>小炭火专属AR蛋糕</title>
+  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/aframevr/aframe/master/examples/showcase/composite/js/aframe-ar.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    .arjs-loader { display: none; }
+    #message { 
+      position: fixed; 
+      bottom: 20px; 
+      left: 0; 
+      width: 100%; 
+      text-align: center; 
+      color: white; 
+      font-size: 24px; 
+      background: rgba(0,0,0,0.5); 
+      display: none; 
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <!-- AR场景 -->
+  <a-scene 
+    arjs="sourceType: webcam; debugUIEnabled: false;" 
+    renderer="antialias: true; alpha: true"
+    cursor="rayOrigin: mouse"
+  >
+    <!-- ================= 三层蛋糕 ================= -->
+    <!-- 底层（绿色） -->
+    <a-cylinder 
+      color="#7CFC00" 
+      radius="1.5" 
+      height="0.3" 
+      position="0 0 0"
+    ></a-cylinder>
+
+    <!-- 中层（黄色） -->
+    <a-cylinder 
+      color="#FFD700" 
+      radius="1.2" 
+      height="0.3" 
+      position="0 0.4 0"
+    ></a-cylinder>
+
+    <!-- 顶层（绿色） -->
+    <a-cylinder 
+      color="#4CAF50" 
+      radius="0.9" 
+      height="0.3" 
+      position="0 0.8 0"
+    ></a-cylinder>
+
+    <!-- ================= 三组角色 ================= -->
+    <!-- 组1：Q版檀健次 & 小炭火（顶层） -->
+    <a-entity position="0 1.1 0">
+      <!-- 檀健次（金色Q版） -->
+      <a-sphere color="#FFD700" radius="0.15" position="0 0.2 0"></a-sphere>
+      <a-cylinder color="#FFC107" radius="0.1" height="0.3" position="0 0 0"></a-cylinder>
+      <!-- 小炭火（红色精灵） -->
+      <a-sphere 
+        color="#FF5722" 
+        radius="0.08" 
+        position="0.3 0.2 0"
+        animation="property: position; to: 0.3 0.4 0; dir: alternate; loop: true; dur: 800"
+      ></a-sphere>
+    </a-entity>
+
+    <!-- 组2：檀小呆 & 檀力球（中层） -->
+    <a-entity position="-0.5 0.5 0">
+      <!-- 檀小呆（白色） -->
+      <a-sphere color="#FFFFFF" radius="0.1" position="0 0 0.2"></a-sphere>
+      <!-- 檀力球（棕色） -->
+      <a-sphere color="#8B4513" radius="0.1" position="0.2 0 0"></a-sphere>
+    </a-entity>
+
+    <!-- 组3：相柳 & 毛球（底层） -->
+    <a-entity position="0.5 0.2 0">
+      <!-- 相柳（白色蛇形） -->
+      <a-cylinder 
+        color="#FFFFFF" 
+        radius="0.05" 
+        height="0.4" 
+        position="0 0.2 0"
+        rotation="0 0 90"
+      ></a-cylinder>
+      <!-- 毛球（灰色） -->
+      <a-sphere color="#808080" radius="0.1" position="0.2 0.1 0"></a-sphere>
+    </a-entity>
+
+    <!-- ================= 蜡烛 & 灯光 ================= -->
+    <!-- 绿色灯光（点击触发） -->
+    <a-light 
+      id="spotlight" 
+      type="spot" 
+      color="#00FF00" 
+      intensity="0" 
+      angle="30" 
+      position="0 1.5 1"
+      target="#cake"
+    ></a-light>
+
+    <!-- 蜡烛（闪烁动画） -->
+    <a-cylinder 
+      color="#FFFFFF" 
+      radius="0.05" 
+      height="0.2" 
+      position="0 1.1 0"
+      animation="property: height; to: 0.25; dir: alternate; loop: true; dur: 500"
+    >
+      <a-sphere color="#FF0000" radius="0.03" position="0 0.1 0"></a-sphere>
+    </a-cylinder>
+
+    <!-- ================= 交互控制 ================= -->
+    <!-- 点击蛋糕触发 -->
+    <a-entity 
+      id="cake"
+      position="0 0 0"
+      event-set__click="_target: #spotlight; light.intensity: 2"
+      event-set__click2="_target: #message; attribute: visible; value: true"
+      sound="src: url(https://www.soundjay.com/human/sounds/birthday-song-01.mp3); autoplay: false; on: click"
+    ></<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>小炭火专属AR蛋糕</title>
+  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/aframevr/aframe/master/examples/showcase/composite/js/aframe-ar.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    .arjs-loader { display: none; }
+    #message { 
+      position: fixed; 
+      bottom: 20px; 
+      left: 0; 
+      width: 100%; 
+      text-align: center; 
+      color: white; 
+      font-size: 24px; 
+      background: rgba(0,0,0,0.5); 
+      display: none; 
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <!-- AR场景 -->
+  <a-scene 
+    arjs="sourceType: webcam; debugUIEnabled: false;" 
+    renderer="antialias: true; alpha: true"
+    cursor="rayOrigin: mouse"
+  >
+    <!-- ================= 三层蛋糕 ================= -->
+    <!-- 底层（绿色） -->
+    <a-cylinder 
+      color="#7CFC00" 
+      radius="1.5" 
+      height="0.3" 
+      position="0 0 0"
+    ></a-cylinder>
+
+    <!-- 中层（黄色） -->
+    <a-cylinder 
+      color="#FFD700" 
+      radius="1.2" 
+      height="0.3" 
+      position="0 0.4 0"
+    ></a-cylinder>
+
+    <!-- 顶层（绿色） -->
+    <a-cylinder 
+      color="#4CAF50" 
+      radius="0.9" 
+      height="0.3" 
+      position="0 0.8 0"
+    ></a-cylinder>
+
+    <!-- ================= 三组角色 ================= -->
+    <!-- 组1：Q版檀健次 & 小炭火（顶层） -->
+    <a-entity position="0 1.1 0">
+      <!-- 檀健次（金色Q版） -->
+      <a-sphere color="#FFD700" radius="0.15" position="0 0.2 0"></a-sphere>
+      <a-cylinder color="#FFC107" radius="0.1" height="0.3" position="0 0 0"></a-cylinder>
+      <!-- 小炭火（红色精灵） -->
+      <a-sphere 
+        color="#FF5722" 
+        radius="0.08" 
+        position="0.3 0.2 0"
+        animation="property: position; to: 0.3 0.4 0; dir: alternate; loop: true; dur: 800"
+      ></a-sphere>
+    </a-entity>
+
+    <!-- 组2：檀小呆 & 檀力球（中层） -->
+    <a-entity position="-0.5 0.5 0">
+      <!-- 檀小呆（白色） -->
+      <a-sphere color="#FFFFFF" radius="0.1" position="0 0 0.2"></a-sphere>
+      <!-- 檀力球（棕色） -->
+      <a-sphere color="#8B4513" radius="0.1" position="0.2 0 0"></a-sphere>
+    </a-entity>
+
+    <!-- 组3：相柳 & 毛球（底层） -->
+    <a-entity position="0.5 0.2 0">
+      <!-- 相柳（白色蛇形） -->
+      <a-cylinder 
+        color="#FFFFFF" 
+        radius="0.05" 
+        height="0.4" 
+        position="0 0.2 0"
+        rotation="0 0 90"
+      ></a-cylinder>
+      <!-- 毛球（灰色） -->
+      <a-sphere color="#808080" radius="0.1" position="0.2 0.1 0"></a-sphere>
+    </a-entity>
+
+    <!-- ================= 蜡烛 & 灯光 ================= -->
+    <!-- 绿色灯光（点击触发） -->
+    <a-light 
+      id="spotlight" 
+      type="spot" 
+      color="#00FF00" 
+      intensity="0" 
+      angle="30" 
+      position="0 1.5 1"
+      target="#cake"
+    ></a-light>
+
+    <!-- 蜡烛（闪烁动画） -->
+    <a-cylinder 
+      color="#FFFFFF" 
+      radius="0.05" 
+      height="0.2" 
+      position="0 1.1 0"
+      animation="property: height; to: 0.25; dir: alternate; loop: true; dur: 500"
+    >
+      <a-sphere color="#FF0000" radius="0.03" position="0 0.1 0"></a-sphere>
+    </a-cylinder>
+
+    <!-- ================= 交互控制 ================= -->
+    <!-- 点击蛋糕触发 -->
+    <a-entity 
+      id="cake"
+      position="0 0 0"
+      event-set__click="_target: #spotlight; light.intensity: 2"
+      event-set__click2="_target: #message; attribute: visible; value: true"
+      sound="src: url(https://www.soundjay.com/human/sounds/birthday-song-01.mp3); autoplay: false; on: click"
+    ></a-entity>
+
+    <!-- 祝福语（点击后显示） -->
+    <a-text 
+      id="message"
+      value="生日快乐，天天开心，多见一次！" 
+      color="#FF0000" 
+      position="0 1.8 0" 
+      scale="1.5 1.5 1.5"
+      visible="false"
+      animation="property: scale; to: 2 2 2; startEvents: show; dur: 1000"
+    ></a-text>
+  </a-scene>
+
+  <!-- 提示文字 -->
+  <div id="hint" style="position: fixed; top: 20px; left: 0; width: 100%; text-align: center; color: white; font-size: 18px; background: rgba(0,0,0,0.5);">
+    扫描二维码后，点击蛋糕触发惊喜！
+  </div>
+</body>
+</html>a-entity>
+
+    <!-- 祝福语（点击后显示） -->
+    <a-text 
+      id="message"
+      value="生日快乐，天天开心，多见一次！" 
+      color="#FF0000" 
+      position="0 1.8 0" 
+      scale="1.5 1.5 1.5"
+      visible="false"
+      animation="property: scale; to: 2 2 2; startEvents: show; dur: 1000"
+    ></a-text>
+  </a-scene>
+
+  <!-- 提示文字 -->
+  <div id="hint" style="position: fixed; top: 20px; left: 0; width: 100%; text-align: center; color: white; font-size: 18px; background: rgba(0,0,0,0.5);">
+    扫描二维码后，点击蛋糕触发惊喜！
+  </div>
+</body>
+</html>
